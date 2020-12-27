@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BAD WORDS GENERATOR</title>
+</head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    body {
+        margin: 3px;
+        padding: 3px;
+        min-height: 100vh;
+        background: #e3eaf0;
+        font-family: consolas;
+        text-align: center;
+    }
+
+    .txtInput {
+        width: 33vh;
+        height: 3.5vh;
+        border: white;
+        border-radius: 18px;
+        box-shadow: 0 0 8px rgb(149, 177, 238);
+        font-family: Arial, Helvetica, sans-serif;
+        letter-spacing: 1.3px;
+        font-size: 16px;
+    }
+
+    .btnSpeak {
+
+        padding: 10px 25px;
+        color: #2196f3;
+        letter-spacing: 3px;
+        text-decoration: none;
+        font-size: 23px;
+        border: #000000;
+        border-radius: 23px;
+        overflow: hidden;
+        transition: 0.2s;
+        text-transform: uppercase;
+        box-shadow: 0 0 20px rgb(190, 190, 187);
+    }
+
+    .btnSpeak:hover {
+        color: #ffffff;
+        background: #2196f3;
+        box-shadow: 0 0 4px #2196f3, 0 0 12px #2196f3, 0 0 22px #2196f3;
+        transition-delay: .1s;
+    }
+    .clearbutton {
+        color: #000000;
+        overflow: hidden;
+        transition: 0.2s;
+        text-transform: uppercase;
+        box-shadow: 0 0 20px rgb(190, 190, 187);
+    }
+
+    .clearbutton:hover {
+        color: #ffffff;
+        background: #f34121;
+        box-shadow: 0 0 4px #2196f3, 0 0 12px #2196f3, 0 0 22px #2196f3;
+        transition-delay: .1s;
+    }
+
+    .banner {
+        position: absolute;
+        width: 42vh;
+        text-align: center;
+        top: 8%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: rgb(255, 255, 255);
+        padding: 10px 20px;
+        font-size: 17px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        text-decoration: none;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, .5);
+        overflow: hidden;
+        background: #000000;
+
+
+    }
+
+    .banner:before {
+        content: '';
+        position: absolute;
+        top: 3px;
+        left: 3px;
+        bottom: 3px;
+        width: 50%;
+        background: rgba(255, 255, 255, 0.05);
+
+    }
+
+    .banner span:nth-child(1) {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: linear-gradient(to right, #0C002B, #1779ff);
+        animation: animate1 2s linear infinite;
+    }
+
+    @keyframes animate1 {
+        0% {
+            transform: translateX(-100%);
+        }
+
+        100% {
+            transform: translateX(100%);
+        }
+    }
+
+    .banner span:nth-child(2) {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 3px;
+        height: 100%;
+        background: linear-gradient(to bottom, #0C002B, #1779ff);
+        animation: animate2 2s linear infinite;
+        animation-delay: 1s;
+    }
+
+    @keyframes animate2 {
+        0% {
+            transform: translateY(-100%);
+        }
+
+        100% {
+            transform: translateY(100%);
+        }
+    }
+
+    .banner span:nth-child(3) {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: linear-gradient(to left, #0C002B, #1779ff);
+        animation: animate3 2s linear infinite;
+    }
+
+    @keyframes animate3 {
+        0% {
+            transform: translateX(100%);
+        }
+
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+
+    .banner span:nth-child(4) {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 3px;
+        height: 100%;
+        background: linear-gradient(to top, #0C002B, #1779ff);
+        animation: animate4 2s linear infinite;
+        animation-delay: 1s;
+    }
+
+    @keyframes animate4 {
+        0% {
+            transform: translateY(100%);
+        }
+
+        100% {
+            transform: translateY(-100%);
+        }
+    }
+</style>
+
+<body>
+    <a id="banner" class="banner" href="#"><b>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            RANDOM GAALI🤬 GENERATOR
+        </b></a> <br> <br> <BR></BR> <BR></BR>
+
+    <p style="color: solid black; font-size-adjust: 11px;"> Select Voice: <select
+            style="border-radius: 5px; color:grey; font-size: 11.5px; border-color: grey;" id='voiceList'></select></p>
+    <br></h1>
+
+    <div id="searchbar" class="searchbar">
+        <input id='txtInput' class="txtInput" placeholder="  Enter Name Here" />
+        <button onclick="clearbox()" title="Clear Text" id="clearbutton" class="clearbutton" style="border: #1779ff ; width: 4vh; border-radius: 50px; margin: 0px; padding:5px 5px; box-shadow: 0 0 2px #1779ff;"> ✖ </button>
+
+    </div> 
+    <p ><span  id="warning" class="warning"><br></span></p><br>
+    <a id='btnSpeak' class="btnSpeak">Speak 🗣</a> <br> <br>
+    <!-- <h3><span id="showgali"></span></h3> -->
+    <BR><BR><BR><BR></BR></BR></BR></BR>
+    <div>
+    <a style="bottom: auto;  font-size: 14px; " style="text-decoration: none; color: #000000;">© Suraj Gaud</a>
+    <a style="text-decoration: none; bottom: auto; box-shadow: 0 0 4px red ;  padding: 4px 4px; border-radius: 50%; width: 2vh;" href="https://www.instagram.com/suraj.xdd" class="fa fa-instagram"></a></div>
+
+    <script>
+        var txtInput = document.querySelector('#txtInput');
+        var voiceList = document.querySelector('#voiceList');
+        var btnSpeak = document.querySelector('#btnSpeak');
+        var synth = window.speechSynthesis;
+        var voices = [];
+        var gaali = ['ki maa ki choot', 'behen ka land', 'randi ka bachcha', 'chootmarika', 'gandu', 'madarchod', 'betichod', 'bhosdike', 'raand', 'jhandoo', 'chinal', 'raand ki aulaad', 'behenchod', 'saat baaap ki aulad','nalayak', 'bhadwa'];
+
+
+        
+        PopulateVoices();
+        if (speechSynthesis !== undefined) {
+            speechSynthesis.onvoiceschanged = PopulateVoices;
+        }
+        function clearbox(){
+            txtInput.value = null;
+            document.getElementById('showgali').innerHTML = "";
+        }
+
+        btnSpeak.addEventListener('click', () => {
+            if (txtInput.value.length == 0) {
+                var warn = document.getElementById('warning').style.visibility = '';
+
+                var warn = document.getElementById('warning').innerHTML = '⚠ ENTER A NAME';
+                var warn = document.getElementById('warning').style.color = 'red';
+                
+            } else {
+
+                var warn = document.getElementById('warning').style.visibility = 'hidden';
+                var randomfunc = Math.floor(Math.random() * gaali.length);
+                var toSpeak = new SpeechSynthesisUtterance(txtInput.value + ' ' + gaali[randomfunc]);
+                var selectedVoiceName = voiceList.selectedOptions[0].getAttribute('data-name');
+                voices.forEach((voice) => {
+                    if (voice.name === selectedVoiceName) {
+                        toSpeak.voice = voice;
+                    }
+                });
+                synth.speak(toSpeak);
+                // document.getElementById('showgali').innerHTML = txtInput.value + ' ' + gaali[randomfunc];
+
+            }
+        });
+
+
+        function PopulateVoices() {
+            voices = synth.getVoices();
+            var selectedIndex = voiceList.selectedIndex < 0 ? 0 : voiceList.selectedIndex;
+            voiceList.innerHTML = '';
+            voices.forEach((voice) => {
+                var listItem = document.createElement('option');
+                listItem.textContent = voice.name;
+                listItem.setAttribute('data-lang', voice.lang);
+                listItem.setAttribute('data-name', voice.name);
+                voiceList.appendChild(listItem);
+            });
+
+            voiceList.selectedIndex = selectedIndex;
+        }
+    </script>
+</body>
+
+</html>
